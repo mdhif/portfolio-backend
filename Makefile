@@ -1,0 +1,2 @@
+start:
+	python serve.py
