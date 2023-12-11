@@ -7,7 +7,7 @@ from datasets import load_dataset
 import logging
 
 # Constants
-OUTPUT_DIR = "output/tts/"
+OUTPUT_DIR = "output/tts/" # To do : create directory if doesn't exist
 
 # Initialize the logger
 logger = logging.getLogger(__name__)

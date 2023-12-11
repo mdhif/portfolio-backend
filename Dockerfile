@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.8-slim
+FROM python:3.10-slim
 
 # Set the working directory in the container
 WORKDIR /app
@@ -7,11 +7,15 @@ WORKDIR /app
 # Install pipenv
 RUN pip install pipenv
 
+# Install soundfile dependencies
+RUN apt-get update
+RUN apt install libsndfile1 -y
+
 # Copy the Pipfile and Pipfile.lock into the container at /app
-COPY Pipfile Pipfile.lock /app/
+COPY Pipfile Pipfile
 
 # Install dependencies using pipenv
-RUN pipenv install --deploy --ignore-pipfile
+RUN pipenv install
 
 # Copy the rest of your application code into the container
 COPY . /app/
